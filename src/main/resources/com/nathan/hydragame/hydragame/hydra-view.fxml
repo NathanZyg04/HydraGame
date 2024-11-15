@@ -21,6 +21,7 @@
                 </VBox>
 
                 <Button fx:id="resetButton" text="Reset" onAction="#reset" styleClass="button" />
+                <Button fx:id="randomHeadButton" text="Move Heads" onAction="#setRandomHeadButton" styleClass="button" />
             </HBox>
 
 

@@ -43,6 +43,13 @@ public class HydraGameController {
     @FXML
     private Label timerLabel;
 
+    @FXML
+    private Button randomHeadButton;
+
+    // boolean value for if the game is going to move the heads around
+    private boolean randonHeadBool = false;
+
+
     private int headSize;
 
     // array list to keep track of hydraHeads on screen
@@ -88,7 +95,7 @@ public class HydraGameController {
         for(int i = 0;i<ROWS;i++)
         {
             RowConstraints row = new RowConstraints();
-            row.setPercentHeight(40);
+            row.setPrefHeight(40);
             gamePane.getRowConstraints().add(row);
         }
     }
@@ -100,9 +107,16 @@ public class HydraGameController {
        resetGame();
     }
 
+    @FXML
+    public void setRandomHeadButton(ActionEvent event) {
+        randonHeadBool = true;
+    }
+
     public void resetGame()
     {
         // clear the list of heads
+        randonHeadBool = false;
+        timer.stop();
         headList.clear();
         playButton.setDisable(false);
         headSizeSlider.setDisable(false);
@@ -148,24 +162,29 @@ public class HydraGameController {
     public void update() {
         t += 0.016;
 
-        if(t > 2) {
-            maxTime--;
-            timerLabel.setText("Time left: " + maxTime + "s");
+        timerLabel.setText("Time left: " + maxTime + "s");
+
+        if(t > 1.5) {
+            maxTime -= 0.5;
+
             t = 0;
-        }
 
-        if(t > 1)
-        {
-            // get an index within the bounds of the array list
-           int randHead = rand.nextInt(headList.size());
+            if(randonHeadBool)
+            {
+                int randHead = rand.nextInt(headList.size());
 
+                System.out.println("size : " + headList.size());
 
-               HydraHead headToMove = headList.get(randHead);
+                // get that hydraHead at the index in the list
+                HydraHead headToMove = headList.get(randHead);
 
-               addHeadToGame(headToMove);
+                // first remove it from the game and the list so you dont have duplicate heads
+                gamePane.getChildren().remove(headToMove);
+                headList.remove(headToMove);
 
-
-
+                // add it back to the game
+                addHeadToGame(headToMove);
+            }
         }
 
         // if timer gets to 0 reset the game
@@ -194,7 +213,7 @@ public class HydraGameController {
         if(headToRemove.getHeadSize() > 1)
         {
             // generate a randonm number 0 or 1 and add it to 2 so it either spawns 2 or 3 heads
-            int moreHeads = rand.nextInt(1) + 2;
+            int moreHeads = rand.nextInt(5) + 2;
 
             // loop through to add more heads to game
             for(int i = 0;i<moreHeads;i++)

@@ -17,13 +17,17 @@ public class HydraHead extends ImageView {
     private int currentGridX;
     private int currentGridY;
 
-    public HydraHead(Image image, int size)
+    private int imageSize;
+
+    public HydraHead(Image image, int size, int imageSize)
     {
         // generate its ImageView from its super class
+
         super(image);
+        this.imageSize = imageSize;
         headSize = size;
-        this.setFitHeight(40);
-        this.setFitWidth(40);
+        this.setFitHeight(imageSize);
+        this.setFitWidth(imageSize);
     }
 
     // getter methods for the attributes

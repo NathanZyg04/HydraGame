@@ -25,14 +25,16 @@ public class HydraHeadsFactory {
     public static HydraHead getHead(int size)
     {
         // new image variable
+        int imageSize = 40;
         Image image;
         Random rand = new Random();
         int num = rand.nextInt(20);
         if(num == 0)
         {
             image = rareOuda;
+            imageSize = 100;
 
-            return new HydraHead(image,size);
+            return new HydraHead(image,size, imageSize);
         }
 
         // get the size of the hydraHead
@@ -60,7 +62,7 @@ public class HydraHeadsFactory {
         }
 
         // create a new hydraHead with that size and return it
-        HydraHead head = new HydraHead(image,size);
+        HydraHead head = new HydraHead(image,size,imageSize);
 
         return head;
     }
