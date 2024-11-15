@@ -1,0 +1,21 @@
+/* Style for Labels */
+.label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-fill: #FFFFFF;
+}
+
+/* Style for Button */
+.button {
+    -fx-background-color: #0078d4;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+/* Style for Button on hover */
+.button:hover {
+    -fx-background-color: #005a8a;
+}

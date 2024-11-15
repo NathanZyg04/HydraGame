@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.nathan.hydragame.hydragame.HydraGameController">
+    <center>
+        <GridPane fx:id="gamePane" hgap="10" vgap="10" alignment="CENTER"/>
+    </center>
+    <top>
+
+        <VBox fx:id="uiPane" alignment="TOP_CENTER" spacing="10">
+
+            <HBox alignment="TOP_CENTER" spacing="70">
+                <Button fx:id="playButton" text="Play" onAction="#play" />
+
+                <VBox alignment="TOP_CENTER" spacing="5">
+
+                    <Label fx:id="sliderLabel" alignment="CENTER" text="Head Size" styleClass="label"/>
+                    <Slider fx:id="headSizeSlider" maxWidth="300" min="2" max="6" value="4" showTickLabels="true" showTickMarks="true" majorTickUnit="1" onMouseDragged="#setHeadSizeSlider"/>
+
+                </VBox>
+
+                <Button fx:id="resetButton" text="Reset" onAction="#reset" styleClass="button" />
+            </HBox>
+
+
+
+
+            <Label fx:id="timerLabel" text="Time left: " visible="false" styleClass="label" />
+
+            <VBox alignment="BOTTOM_CENTER">
+                <Label fx:id="gameOverLabel" text="Game over!" visible="false" styleClass="label" />
+            </VBox>
+
+
+
+        </VBox>
+
+
+
+    </top>
+</BorderPane>
