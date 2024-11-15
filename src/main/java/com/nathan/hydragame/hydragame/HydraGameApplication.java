@@ -12,6 +12,9 @@ import java.io.IOException;
 public class HydraGameApplication extends Application {
 
     public void start(Stage stage) throws IOException {
+
+        System.out.println("this is a test");
+
         FXMLLoader loader = new FXMLLoader(HydraGameApplication.class.getResource("hydra-view.fxml"));
         Scene scene = new Scene(loader.load(), 800,850);
 
